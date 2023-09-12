@@ -1,0 +1,36 @@
+.parentContainer {
+  display: grid;
+  height: 100vh;
+  height: 100svh;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow-y: hidden;
+}
+.backgroundImageContainer {
+  background-image: url("../../assets/backgrounds/dounuts-background.jpeg");
+  background-position: -200px -100px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.wave {
+  position: absolute;
+  fill: var(--background);
+  top: -40%;
+  left: 0;
+  height: 160%;
+  transform: translate(-95%) rotateX(180deg);
+}
+.form {
+  border: 5px solid var(--text);
+  width: 40rem;
+  height: 40rem;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

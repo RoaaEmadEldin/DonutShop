@@ -1,0 +1,16 @@
+.linksContainer {
+  font-size: 3rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100svh;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.linksContainer > li {
+  list-style-type: none;
+  margin-bottom: 2rem;
+}

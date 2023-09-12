@@ -1,2 +1,29 @@
 :root {
+  --background: rgba(241, 243, 246, 1);
+  --skeleton: rgba(227, 229, 232, 1);
+  --primary: rgba(240, 83, 117, 1);
+  --secondary: rgba(39, 185, 153, 1);
+  --text: rgba(99, 64, 72, 1);
+  --accent-70: rgba(99, 64, 72, 0.7);
+  --gap: 2rem;
+  --primary-font: Roboto;
+  --secondary-font: "cursive";
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--background);
+  font-family: "Dosis", sans-serif;
+  color: var(--text);
 }
