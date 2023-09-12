@@ -1,4 +1,4 @@
-const categories = [
+categories = [
   {
     name: "Minis",
     thumbnail: [
@@ -272,6 +272,21 @@ const categories = [
       "categories/Donuts/thumbnail/640.jpeg",
     ],
     items: [
+      {
+        name: "Twisted Bundle",
+        price: 150,
+        discount: 0.17,
+        description: "Tastes Nice",
+        pickupOnly: false,
+        amountInStock: 100,
+        image: [
+          "categories/Donuts/Twisted Bundle/128.jpeg",
+          "categories/Donuts/Twisted Bundle/256.jpeg",
+          "categories/Donuts/Twisted Bundle/384.jpeg",
+          "categories/Donuts/Twisted Bundle/640.jpeg",
+        ],
+        configurations: [],
+      },
       {
         name: "Sharebox - 32 Pieces",
         price: 550,
