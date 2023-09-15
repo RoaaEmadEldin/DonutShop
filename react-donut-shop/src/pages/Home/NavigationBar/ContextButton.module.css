@@ -1,0 +1,70 @@
+.pickupBtn,
+.deliveryBtn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.pickupBtn,
+.deliveryBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 4px;
+  width: 100%;
+  user-select: none;
+  z-index: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.pickupBtn,
+.deliveryBtn {
+  padding: calc(var(--gap) * 0.5) calc(var(--gap) * 0.5);
+  border: 2px solid var(--accent-20);
+  transition: border 0.1s ease, color 0.1s ease;
+}
+.pickupBtn:hover,
+.deliveryBtn:hover {
+  border: 2px solid var(--text);
+}
+
+.pickupBtn img,
+.deliveryBtn img {
+  margin-right: var(--gap);
+  height: 3rem;
+  z-index: 5;
+}
+
+.selectedMode {
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+.selectedMode:hover {
+  border: 2px solid var(--primary);
+}
+
+.pickupBtn::before,
+.deliveryBtn::before {
+  content: "";
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  background-color: var(--primary);
+  top: 0;
+  left: 0;
+  transform: translateX(-100%) translateY(-25%) scale(0);
+  border-radius: 50%;
+  opacity: 0.2;
+  transition: transform 0.1s ease;
+}
+
+.selectedMode::before {
+  transform: translateX(-35%) translateY(-25%) scale(1);
+}

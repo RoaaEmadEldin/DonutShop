@@ -1,0 +1,24 @@
+.cart {
+  color: var(--primary);
+  font-size: 3rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.cart::after {
+  content: attr(data-cartCount);
+  position: absolute;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 2px solid var(--primary);
+  background-color: white;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  transform: translateX(30%) translateY(30%);
+}

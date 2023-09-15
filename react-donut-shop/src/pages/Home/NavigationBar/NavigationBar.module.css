@@ -1,0 +1,128 @@
+.navigation {
+  display: flex;
+  height: calc(var(--gap) * 4);
+  background-color: white;
+  box-shadow: 0 2px 4px rgb(227, 227, 227);
+  padding: 0 calc(var(--gap) * 2);
+}
+
+.leftSegment {
+  display: flex;
+  height: calc(var(--gap) * 4);
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: calc(var(--gap) * 2);
+}
+.logoContainer img {
+  width: calc(var(--gap) * 3);
+}
+
+.buttonsContainer {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  gap: var(--gap);
+  grid-template-columns: repeat(2, 16rem) 14rem;
+}
+
+.menuBtn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.menuBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 4px;
+  width: 100%;
+  user-select: none;
+}
+
+.menuBtn {
+  color: white;
+  text-decoration: none;
+  background-color: var(--secondary);
+  border: 2px solid var(--secondary-dimmed);
+  padding: calc(var(--gap) * 0.1) calc(var(--gap) * 0.2);
+  width: 80%;
+  margin-left: var(--gap);
+  position: relative;
+  transition: background-color 0.1s ease;
+}
+.menuBtn:hover {
+  background-color: var(--secondary-dimmed);
+}
+.menuBtn img {
+  margin-right: calc(var(--gap) * 0.5);
+}
+
+.menuBtn::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 150%;
+  top: -25%;
+  left: -2px; /* because border is 2px */
+  border-radius: 1px;
+  background-color: var(--accent-20);
+  transform: translateX(calc(var(--gap) * -1 - 50%));
+}
+
+.rightSegment {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.signInBtn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.signInBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.signInBtn {
+  color: white;
+  text-decoration: none;
+  background-color: var(--primary);
+  border: 2px solid var(--primary-dimmed);
+  padding: calc(var(--gap) * 0.1) calc(var(--gap) * 0.2);
+  margin-left: calc(var(--gap) * 2);
+  position: relative;
+  transition: background-color 0.1s ease;
+}
+
+.signInBtn:hover {
+  background-color: var(--primary-dimmed);
+}
