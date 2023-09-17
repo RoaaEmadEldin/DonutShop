@@ -26,9 +26,13 @@
 
 .pickupBtn,
 .deliveryBtn {
+  display: flex;
+  gap: var(--gap);
   padding: calc(var(--gap) * 0.5) calc(var(--gap) * 0.5);
   border: 2px solid var(--accent-20);
+  text-wrap: nowrap;
   transition: border 0.1s ease, color 0.1s ease;
+  width: 16rem;
 }
 .pickupBtn:hover,
 .deliveryBtn:hover {
@@ -37,7 +41,6 @@
 
 .pickupBtn img,
 .deliveryBtn img {
-  margin-right: var(--gap);
   height: 3rem;
   z-index: 5;
 }

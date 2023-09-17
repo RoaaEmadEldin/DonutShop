@@ -19,23 +19,27 @@ const NavigationBar = () => {
           <div className={Style.logoContainer}>
             <img src={Logo} alt="Fatis Logo" />
           </div>
+
           <div className={Style.buttonsContainer}>
-            <ContextButton
-              inactiveImage={StoreInactive}
-              activeImage={StoreActive}
-              selected={selectedMode == 0}
-              onClick={() => setSelectedMode(0)}
-            >
-              Self-Pickup
-            </ContextButton>
-            <ContextButton
-              inactiveImage={DeliveryInactive}
-              activeImage={DeliveryActive}
-              selected={selectedMode == 1}
-              onClick={() => setSelectedMode(1)}
-            >
-              Delivery
-            </ContextButton>
+            <div className={Style.orderBtns}>
+              <ContextButton
+                inactiveImage={StoreInactive}
+                activeImage={StoreActive}
+                selected={selectedMode == 0}
+                onClick={() => setSelectedMode(0)}
+              >
+                Self-Pickup
+              </ContextButton>
+              <ContextButton
+                inactiveImage={DeliveryInactive}
+                activeImage={DeliveryActive}
+                selected={selectedMode == 1}
+                onClick={() => setSelectedMode(1)}
+              >
+                Delivery
+              </ContextButton>
+            </div>
+            <span className={Style.separator}></span>
             <Link to="/login" className={Style.menuBtn}>
               <img src={Menu} alt="menu-photo" />
               <span>Menu</span>

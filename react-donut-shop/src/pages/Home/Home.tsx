@@ -11,14 +11,16 @@ const Home = () => {
   });
   return (
     <>
-      <header className={[Style.header, Style.pad].join(" ")}>
-        <NavigationBar />
-      </header>
-      {!loading && (
-        <section className={[Style.slider, Style.pad].join(" ")}>
-          <ImageSlider posters={posters} />
-        </section>
-      )}
+      <main className={Style.page}>
+        <header className={[Style.header, Style.pad].join(" ")}>
+          <NavigationBar />
+        </header>
+        {!loading && (
+          <section className={[Style.slider, Style.pad].join(" ")}>
+            <ImageSlider posters={posters} />
+          </section>
+        )}
+      </main>
     </>
   );
 };
