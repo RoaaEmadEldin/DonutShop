@@ -10,7 +10,7 @@ const CartIcon = ({ itemsCount, onClick }: Props) => {
     <span
       className={Style.cart}
       onClick={() => onClick()}
-      data-cartCount={itemsCount}
+      data-cartcount={itemsCount}
     >
       <FaShoppingCart></FaShoppingCart>
     </span>

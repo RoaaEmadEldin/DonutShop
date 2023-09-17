@@ -1,0 +1,17 @@
+.imageSlider {
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  border-radius: var(--border-radius);
+}
+
+.bulletsContainer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 1rem;
+}

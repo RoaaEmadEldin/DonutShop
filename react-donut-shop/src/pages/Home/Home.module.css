@@ -1,0 +1,17 @@
+.header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgb(227, 227, 227);
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: calc(var(--gap) * 4);
+}
+
+.slider {
+  padding-top: calc(var(--gap) * 4 + var(--gap));
+}
+
+.pad {
+  padding-left: calc(var(--gap) * 2);
+  padding-right: calc(var(--gap) * 2);
+}

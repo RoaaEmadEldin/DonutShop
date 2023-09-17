@@ -6,11 +6,13 @@
   --secondary: rgba(39, 185, 153, 1);
   --secondary-dimmed: rgb(32, 160, 132);
   --text: rgba(99, 64, 72, 1);
+  --accent-light: rgb(176, 161, 165);
   --accent-70: rgba(99, 64, 72, 0.7);
   --accent-20: rgba(99, 64, 72, 0.2);
   --gap: 2rem;
   --primary-font: Roboto;
   --secondary-font: "cursive";
+  --border-radius: 4px;
 }
 
 *,
@@ -29,4 +31,21 @@ body {
   background-color: var(--background);
   font-family: "Dosis", sans-serif;
   color: var(--text);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--accent-light);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: var(--text);
 }

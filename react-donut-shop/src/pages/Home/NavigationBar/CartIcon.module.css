@@ -6,7 +6,7 @@
 }
 
 .cart::after {
-  content: attr(data-cartCount);
+  content: attr(data-cartcount);
   position: absolute;
   font-size: 1.1rem;
   font-weight: bold;
