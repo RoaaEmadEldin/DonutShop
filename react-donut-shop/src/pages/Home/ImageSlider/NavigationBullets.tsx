@@ -12,6 +12,7 @@ const NavigationBullets = ({ posters, currentPoster, onClick }: Props) => {
     <ul className={Style.bullets}>
       {posters.map((_, index) => (
         <li
+          key={index}
           onClick={() => onClick(index)}
           className={[
             Style.bullet,
