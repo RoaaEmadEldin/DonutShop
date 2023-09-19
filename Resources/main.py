@@ -43,7 +43,7 @@ for i in range(len(driver.find_elements(By.CLASS_NAME, "icwzQh"))):
     os.makedirs(categoryThumbnailImagesPath)
 
     categoryImages = list(map(lambda x: x.strip(",").strip(" "), re.split(
-        r"\d+w", element.find_element(By.TAG_NAME, "img").get_attribute("srcset"))))[:4]
+        r"\d+w", element.find_element(By.TAG_NAME, "img").get_attribute("srcset"))))[1:5]
 
     for url, quality in zip(categoryImages, ["128", "256", "384", "640"]):
         imagePath = f"{categoryThumbnailImagesPath}/{quality}.jpeg"
@@ -55,7 +55,7 @@ for i in range(len(driver.find_elements(By.CLASS_NAME, "icwzQh"))):
     element.click()
     # gets the images for each category
     items = []
-    time.sleep(1)
+    time.sleep(2)
     for j in range(len(driver.find_elements(By.CLASS_NAME, "icwzQh"))):
         itemElement = driver.find_elements(By.CLASS_NAME, "icwzQh")[j]
         item = {}
@@ -72,7 +72,7 @@ for i in range(len(driver.find_elements(By.CLASS_NAME, "icwzQh"))):
         os.makedirs(itemPath)  # create a folder to store item images
 
         itemImages = list(map(lambda x: x.strip(",").strip(" "), re.split(
-            r"\d+w", itemElement.find_element(By.TAG_NAME, "img").get_attribute("srcset"))))[:4]
+            r"\d+w", itemElement.find_element(By.TAG_NAME, "img").get_attribute("srcset"))))[1:5]
         for url, quality in zip(itemImages, ["128", "256", "384", "640"]):
             imagePath = f"{itemPath}/{quality}.jpeg"
             item["image"].append(imagePath)
@@ -82,7 +82,7 @@ for i in range(len(driver.find_elements(By.CLASS_NAME, "icwzQh"))):
             threads.append(thread)
 
         itemElement.click()
-        time.sleep(1)
+        time.sleep(2)
         configurations = []
         for configurationElement in driver.find_elements(By.CLASS_NAME, "junuWZ")[:-1]:
             configurationData = configurationElement.text.split("\n")
@@ -94,10 +94,15 @@ for i in range(len(driver.find_elements(By.CLASS_NAME, "icwzQh"))):
                 configurationData.remove("Required")
             except:
                 continue
-            least, most = sorted(
-                map(int, re.findall('\d+', configurationData[1])))
-            configuration["minAmount"] = least
+
+            try:
+                least, most = sorted(
+                    map(int, re.findall('\d+', configurationData[1])))
+            except:
+                continue
+
             configuration["maxAmount"] = most
+            configuration["minAmount"] = least
             configuration["selections"] = configurationData[2:]
             configurations.append(configuration)
         # presses the back button
@@ -109,7 +114,7 @@ for i in range(len(driver.find_elements(By.CLASS_NAME, "icwzQh"))):
     driver.find_elements(By.CLASS_NAME, "iJGcRM")[-1].click()
     category["items"] = items
     categories.append(category)
-    time.sleep(1)
+    time.sleep(2)
 
 for thread in threads:
     thread.join()
