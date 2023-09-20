@@ -10,7 +10,7 @@
 
 .header {
   background-color: white;
-  box-shadow: 0 2px 4px rgb(227, 227, 227);
+  box-shadow: 0 2px 4px var(--shadow);
   position: relative;
   z-index: 1000;
   width: 100%;
@@ -18,4 +18,14 @@
 }
 
 .slider {
+}
+
+.itemSlider {
+  display: flex;
+  gap: var(--gap);
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }

@@ -4,6 +4,7 @@ import NavigationBar from "./NavigationBar";
 import ImageSlider from "./ImageSlider";
 import Style from "./Home.module.css";
 import ImageSliderSkeleton from "./LoadingSkeletons/ImageSliderSkeleton";
+import Card from "../../common/Card";
 
 const RESOUCRE_PATH = "../../src/assets/";
 
@@ -28,6 +29,21 @@ const Home = () => {
         <section className={[Style.slider, Style.pad].join(" ")}>
           {(loading || postersLoading) && <ImageSliderSkeleton />}
           {!loading && !postersLoading && <ImageSlider posters={posters} />}
+        </section>
+        <section className={[Style.itemSlider, Style.pad].join(" ")}>
+          {categories.map((category) =>
+            category.items.map((item) => (
+              <Card
+                image={RESOUCRE_PATH + item.image[3]}
+                name={item.name}
+                description={
+                  "Chocolate glazed dounuts with crunchy biscuits and fresh strawberries"
+                }
+                liked={false}
+                price={item.price}
+              />
+            ))
+          )}
         </section>
       </main>
     </>
