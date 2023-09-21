@@ -31,14 +31,13 @@ const Home = () => {
           {!loading && !postersLoading && <ImageSlider posters={posters} />}
         </section>
         <section className={[Style.itemSlider, Style.pad].join(" ")}>
-          {categories.map((category) =>
-            category.items.map((item) => (
+          {categories.map((category, categoryIndex) =>
+            category.items.map((item, itemIndex) => (
               <Card
+                key={`${categoryIndex} ${itemIndex}`}
                 image={RESOUCRE_PATH + item.image[3]}
                 name={item.name}
-                description={
-                  "Chocolate glazed dounuts with crunchy biscuits and fresh strawberries"
-                }
+                description={item.description}
                 liked={false}
                 price={item.price}
               />
