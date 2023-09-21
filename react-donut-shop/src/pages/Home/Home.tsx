@@ -5,6 +5,7 @@ import ImageSlider from "./ImageSlider";
 import Style from "./Home.module.css";
 import ImageSliderSkeleton from "./LoadingSkeletons/ImageSliderSkeleton";
 import Card from "../../common/Card";
+import CardSkeleton from "../../common/LoadingSkeletons/CardSkeleton";
 
 const RESOUCRE_PATH = "../../src/assets/";
 
@@ -31,18 +32,20 @@ const Home = () => {
           {!loading && !postersLoading && <ImageSlider posters={posters} />}
         </section>
         <section className={[Style.itemSlider, Style.pad].join(" ")}>
-          {categories.map((category, categoryIndex) =>
-            category.items.map((item, itemIndex) => (
-              <Card
-                key={`${categoryIndex} ${itemIndex}`}
-                image={RESOUCRE_PATH + item.image[3]}
-                name={item.name}
-                description={item.description}
-                liked={false}
-                price={item.price}
-              />
-            ))
-          )}
+          {<CardSkeleton />}
+          {!loading &&
+            categories.map((category, categoryIndex) =>
+              category.items.map((item, itemIndex) => (
+                <Card
+                  key={`${categoryIndex} ${itemIndex}`}
+                  image={RESOUCRE_PATH + item.image[3]}
+                  name={item.name}
+                  description={item.description}
+                  liked={false}
+                  price={item.price}
+                />
+              ))
+            )}
         </section>
       </main>
     </>
