@@ -1,6 +1,8 @@
 import Style from "./Card.module.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import Like from "./Like";
+import { useState } from "react";
+import AmountControl from "./AmountControl";
 
 interface Props {
   image: string;
@@ -10,6 +12,7 @@ interface Props {
   price: number;
 }
 const Card = ({ image, name, description, liked, price }: Props) => {
+  const [amountInCart, setAmountInCart] = useState(0);
   const handleLike = () => {
     console.log(`${name} liked button clicked.`);
   };
@@ -28,10 +31,19 @@ const Card = ({ image, name, description, liked, price }: Props) => {
         </div>
         <div className={Style.bottomContent}>
           <div className={Style.addToCartBtn}>
-            <button>
-              <AiOutlinePlusCircle />
-              <span>ADD TO CART</span>
-            </button>
+            {amountInCart === 0 && (
+              <button onClick={() => setAmountInCart((prev) => prev + 1)}>
+                <AiOutlinePlusCircle />
+                <span>ADD TO CART</span>
+              </button>
+            )}
+            {amountInCart !== 0 && (
+              <AmountControl
+                onChange={(newAmount: number) => setAmountInCart(newAmount)}
+              >
+                {amountInCart}
+              </AmountControl>
+            )}
           </div>
           <div className={Style.separator}></div>
           <div className={Style.priceContainer}>

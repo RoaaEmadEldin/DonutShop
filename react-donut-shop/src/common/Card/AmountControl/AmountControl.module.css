@@ -1,0 +1,24 @@
+.control {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.amount {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.plus,
+.minus {
+  font-size: 2rem;
+  color: var(--accent-20);
+  cursor: pointer;
+}
+.plus:hover,
+.minus:hover {
+  color: var(--accent-70);
+}
