@@ -1,0 +1,33 @@
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+.itemSlider {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) * 0.5);
+  overflow: hidden;
+}
+
+.items {
+  display: flex;
+  gap: var(--gap);
+  width: 100%;
+}
+
+.labelContainer {
+  height: 2rem;
+  width: 12rem;
+  border-radius: var(--border-radius);
+  display: inline;
+  background: linear-gradient(
+    90deg,
+    var(--skeleton) 8%,
+    rgb(243, 244, 246) 18%,
+    var(--skeleton) 33%
+  );
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+}

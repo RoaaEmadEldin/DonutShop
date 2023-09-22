@@ -5,6 +5,7 @@ import ImageSlider from "./ImageSlider";
 import Style from "./Home.module.css";
 import ImageSliderSkeleton from "./LoadingSkeletons/ImageSliderSkeleton";
 import ItemSlider from "./ItemSlider";
+import ItemSliderSkeleton from "./LoadingSkeletons/ItemSliderSkeleton";
 
 const RESOUCRE_PATH = "../../src/assets/";
 
@@ -31,6 +32,7 @@ const Home = () => {
           {!loading && !postersLoading && <ImageSlider posters={posters} />}
         </section>
         <section className={[Style.itemSlider, Style.pad].join(" ")}>
+          {loading && <ItemSliderSkeleton cardsAmount={6} />}
           {!loading && (
             <ItemSlider
               label="Doughnuts"
@@ -40,6 +42,7 @@ const Home = () => {
           )}
         </section>
         <section className={[Style.itemSlider, Style.pad].join(" ")}>
+          {loading && <ItemSliderSkeleton cardsAmount={3} />}
           {!loading && (
             <ItemSlider
               label="ShareBox"

@@ -14,6 +14,7 @@
   --primary-font: Roboto;
   --secondary-font: "cursive";
   --border-radius: 4px;
+  --navigation-height: calc(var(--gap) * 4);
 }
 
 *,
