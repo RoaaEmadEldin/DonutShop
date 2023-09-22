@@ -4,8 +4,7 @@ import NavigationBar from "./NavigationBar";
 import ImageSlider from "./ImageSlider";
 import Style from "./Home.module.css";
 import ImageSliderSkeleton from "./LoadingSkeletons/ImageSliderSkeleton";
-import Card from "../../common/Card";
-import CardSkeleton from "../../common/LoadingSkeletons/CardSkeleton";
+import ItemSlider from "./ItemSlider";
 
 const RESOUCRE_PATH = "../../src/assets/";
 
@@ -32,20 +31,22 @@ const Home = () => {
           {!loading && !postersLoading && <ImageSlider posters={posters} />}
         </section>
         <section className={[Style.itemSlider, Style.pad].join(" ")}>
-          {<CardSkeleton />}
-          {!loading &&
-            categories.map((category, categoryIndex) =>
-              category.items.map((item, itemIndex) => (
-                <Card
-                  key={`${categoryIndex} ${itemIndex}`}
-                  image={RESOUCRE_PATH + item.image[3]}
-                  name={item.name}
-                  description={item.description}
-                  liked={false}
-                  price={item.price}
-                />
-              ))
-            )}
+          {!loading && (
+            <ItemSlider
+              label="Doughnuts"
+              items={categories[4].items.slice(8, 18)}
+              RESOUCRE_PATH={RESOUCRE_PATH}
+            />
+          )}
+        </section>
+        <section className={[Style.itemSlider, Style.pad].join(" ")}>
+          {!loading && (
+            <ItemSlider
+              label="ShareBox"
+              items={categories[1].items}
+              RESOUCRE_PATH={RESOUCRE_PATH}
+            />
+          )}
         </section>
       </main>
     </>

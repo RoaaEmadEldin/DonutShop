@@ -4,7 +4,7 @@ export default interface Category {
   items: Item[];
 }
 
-interface Item {
+export interface Item {
   name: string;
   price: number;
   discount: number;
@@ -15,7 +15,7 @@ interface Item {
   configurations: ItemConfiguration[];
 }
 
-interface ItemConfiguration {
+export interface ItemConfiguration {
   name: string;
   required: boolean;
   minAmount: number;

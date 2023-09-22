@@ -1,0 +1,32 @@
+.itemSlider {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) * 0.5);
+}
+
+.items {
+  overflow-x: auto;
+  display: flex;
+  gap: var(--gap);
+  width: 100%;
+  padding-bottom: calc(var(--gap) * 0.5);
+}
+
+.label {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: relative;
+  display: inline;
+}
+
+.label::after {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 2px;
+  top: 110%;
+  left: 0;
+  background-color: var(--accent-20);
+  border-radius: var(--border-radius);
+}
