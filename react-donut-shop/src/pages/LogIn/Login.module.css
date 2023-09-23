@@ -8,9 +8,8 @@
 }
 .backgroundImageContainer {
   background-image: url("../../assets/backgrounds/dounuts-background.jpeg");
-  background-position: 0px -100px;
   background-repeat: no-repeat;
-  object-fit: cover;
+  background-size: cover;
 }
 .contentContainer {
   display: flex;
@@ -36,15 +35,15 @@
   background-color: rgba(255, 255, 255, 0.35);
 }
 
-.logoContainer{
+.logoContainer {
   text-align: center;
   margin: 4rem 0 0 0;
 }
 
-.logo{
+.logo {
   width: 15%;
 }
-.title{
+.title {
   text-align: center;
   font-size: 4rem;
   font-weight: bold;
@@ -52,32 +51,31 @@
   margin-top: -1rem;
 }
 
-.container{
+.container {
   margin: 1rem 4rem 0;
 }
 
-.labels{
+.labels {
   color: rgb(142, 66, 37);
   font-size: 2rem;
   font-weight: 500;
   display: inline;
-  justify-content:left;
+  justify-content: left;
   align-items: center;
   margin-top: 1rem;
   margin-right: 54%;
 }
 
-.input{
+.input {
   font-size: 1.7rem;
   border-radius: 1.4rem;
   border: 1px solid white;
   width: 100%;
   text-indent: 1rem;
   height: 4rem;
-
 }
 
-.forgetPass{
+.forgetPass {
   font-size: 1.4rem;
   display: inline;
   justify-content: right;
@@ -88,13 +86,13 @@
   cursor: pointer;
 }
 
-.loginContainer{
+.loginContainer {
   margin: 2rem 0 0 0;
   display: flex;
   justify-content: center;
 }
 
-#loginButton{
+#loginButton {
   width: 100%;
   height: 4rem;
   border: 0;
@@ -103,23 +101,22 @@
   font-size: 2.2rem;
   font-weight: bold;
   color: rgb(93, 26, 6);
-
 }
 
-#signupContainer{
+#signupContainer {
   width: 100%;
   text-align: center;
   font-size: 1.5rem;
   color: rgb(142, 66, 37);
 }
 
-#signupLink{
+#signupLink {
   color: rgb(142, 66, 37);
   font-style: italic;
   font-weight: bold;
 }
 
-.horizontalLine{
+.horizontalLine {
   width: 100%;
   text-align: center;
   position: relative;
@@ -127,52 +124,51 @@
   margin-top: 2.5rem;
 }
 
-.lineText{
+.lineText {
   color: rgb(142, 66, 37);
   padding: 0 1rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color:  rgb(250, 232, 236);
+  background-color: rgb(250, 232, 236);
   font-size: 1.3rem;
 }
 
-.googleLogoContainer{
+.googleLogoContainer {
   text-align: center;
 }
 
-.googleLogo{
+.googleLogo {
   margin: 1.5rem;
   width: 7%;
-  
 }
 
-.inputPass{
+.inputPass {
   font-size: 1.7rem;
   border-radius: 1.4rem;
   border: 1px solid white;
   width: 90%;
   text-indent: 1rem;
   height: 4rem;
-
 }
 
-.showPassBtn{
+.showPassBtn {
   font-size: 1.7rem;
   border-radius: 1.4rem;
   border: 0;
   width: 10%;
   text-align: center;
-  
+
   height: 4rem;
   background-color: white;
   color: rgba(225, 29, 56, 1);
 }
 
-.inputPass:focus, .input:focus{
-  outline: none ;
-  border-color: white ;
+.inputPass:focus,
+.input:focus {
+  outline: none;
+  border-color: white;
   background-color: rgba(255, 255, 255, 0.35);
 }
 
@@ -180,11 +176,10 @@
   background-color: var(--primary);
 }
 
-#signupLink:hover{
+#signupLink:hover {
   color: rgb(93, 26, 6);
 }
 
-.forgetPass:hover{
+.forgetPass:hover {
   font-weight: 600;
 }
-
