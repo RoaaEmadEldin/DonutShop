@@ -6,15 +6,9 @@ import Style from "./Home.module.css";
 import ImageSliderSkeleton from "./LoadingSkeletons/ImageSliderSkeleton";
 import ItemSlider from "./ItemSlider";
 import ItemSliderSkeleton from "./LoadingSkeletons/ItemSliderSkeleton";
-import { useState } from "react";
-import { Item } from "../../services/Category";
+import useCart from "../../hooks/useCart";
 
 const RESOUCRE_PATH = "../../src/assets/";
-
-interface CartItem {
-  item: Item;
-  amount: number;
-}
 
 const Home = () => {
   const { categories, error, loading, setCategories, setError } =
@@ -28,19 +22,16 @@ const Home = () => {
   });
   const postersLoading = useImages(posters.map((poster) => poster.image));
 
-  // const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
-  // const handleItemChange = (itemName: string, amount: number) => {
-  //   if (cartItems.find((cartItem) => cartItem.item.name === itemName)){
-
-  //   }
-  // };
-
+  const { cart, cartItems, setCartItems } = useCart();
+  const onAmountChange = (itemID: string, amountInCart: number) => {
+    cart.addCartItem(itemID, amountInCart);
+    setCartItems(cart.cartItems);
+  };
   return (
     <>
       <main className={Style.page}>
         <header className={[Style.header, Style.pad].join(" ")}>
-          <NavigationBar />
+          <NavigationBar cartItems={cartItems} />
         </header>
         <section className={[Style.slider, Style.pad].join(" ")}>
           {(loading || postersLoading) && <ImageSliderSkeleton />}
@@ -52,9 +43,9 @@ const Home = () => {
             <ItemSlider
               label="Doughnuts"
               items={categories[4].items.slice(8, 18)}
-              // cartItems={cartItems}
-              // onChange={() => handleItemChange(itemName, amount)}
               RESOUCRE_PATH={RESOUCRE_PATH}
+              // cartItems={cartItems}
+              onAmountChange={onAmountChange}
             />
           )}
         </section>
@@ -64,9 +55,9 @@ const Home = () => {
             <ItemSlider
               label="ShareBox"
               items={categories[1].items}
-              // cartItems={cartItems}
-              // onChange={() => handleItemChange(itemName, amount)}
               RESOUCRE_PATH={RESOUCRE_PATH}
+              // cartItems={cartItems}
+              onAmountChange={onAmountChange}
             />
           )}
         </section>

@@ -1,14 +1,15 @@
 import Card from "../../../common/Card";
-import { Item } from "../../../services/Category";
+import Item from "../../../services/types/Item";
 import Style from "./ItemSlider.module.css";
 
 interface Props {
   label: string;
   items: Item[];
   RESOUCRE_PATH: string;
+  onAmountChange(itemID: string, amountInCart: number): void;
 }
 
-const ItemSlider = ({ label, items, RESOUCRE_PATH }: Props) => {
+const ItemSlider = ({ label, items, RESOUCRE_PATH, onAmountChange }: Props) => {
   return (
     <article className={Style.itemSlider}>
       <div className={Style.labelContainer}>
@@ -23,6 +24,7 @@ const ItemSlider = ({ label, items, RESOUCRE_PATH }: Props) => {
             description={item.description}
             liked={false}
             price={item.price}
+            onAmountChange={onAmountChange}
           />
         ))}
       </div>

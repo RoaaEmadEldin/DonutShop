@@ -12,8 +12,8 @@ const ItemSliderSkeleton = ({ cardsAmount }: Props) => {
       <div className={Style.items}>
         {Array(cardsAmount)
           .fill(0)
-          .map(() => (
-            <CardSkeleton />
+          .map((_, index) => (
+            <CardSkeleton key={index} />
           ))}
       </div>
     </article>

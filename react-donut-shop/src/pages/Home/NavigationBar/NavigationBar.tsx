@@ -4,14 +4,25 @@ import StoreInactive from "../../../assets/main/store-inactive.svg";
 import DeliveryActive from "../../../assets/main/delivery-active.svg";
 import DeliveryInactive from "../../../assets/main/delivery-inactive.svg";
 import Menu from "../../../assets/main/menu.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContextButton from "./ContextButton";
 import { Link } from "react-router-dom";
 import Style from "./NavigationBar.module.css";
 import CartIcon from "./CartIcon";
-const NavigationBar = () => {
+import CartItem from "../../../services/types/CartItem";
+
+interface Props {
+  cartItems: CartItem[];
+}
+
+const NavigationBar = ({ cartItems }: Props) => {
   const [selectedMode, setSelectedMode] = useState(0);
-  const [itemsCount, setItemsCount] = useState(0);
+
+  const calculateAmount = () => {
+    let sum = 0;
+    cartItems.map((item) => item.amount).forEach((el) => (sum += el));
+    return sum;
+  };
   return (
     <>
       <nav className={Style.navigation}>
@@ -49,8 +60,8 @@ const NavigationBar = () => {
         <div className={Style.rightSegment}>
           <div className={Style.actions}>
             <CartIcon
-              itemsCount={itemsCount}
-              onClick={() => setItemsCount((prev) => prev + 1)}
+              itemsCount={calculateAmount()}
+              onClick={() => console.log(cartItems)}
             />
             <div>
               <Link to="/login" className={Style.signInBtn}>
