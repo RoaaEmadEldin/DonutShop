@@ -1,0 +1,7 @@
+.mapContainer {
+  width: 100%;
+  aspect-ratio: 7 / 3;
+  background-color: var(--background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 4px rgb(199, 199, 199);
+}

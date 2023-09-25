@@ -7,6 +7,7 @@ import ImageSliderSkeleton from "./LoadingSkeletons/ImageSliderSkeleton";
 import ItemSlider from "./ItemSlider";
 import ItemSliderSkeleton from "./LoadingSkeletons/ItemSliderSkeleton";
 import useCart from "../../hooks/useCart";
+import { useState } from "react";
 
 const RESOUCRE_PATH = "../../src/assets/";
 
@@ -27,11 +28,18 @@ const Home = () => {
     cart.addCartItem(itemID, amountInCart);
     setCartItems(cart.cartItems);
   };
+  const [showContext, setShowContext] = useState(false);
+  const handleContextButtonClick = () => setShowContext(true);
+
   return (
     <>
       <main className={Style.page}>
         <header className={[Style.header, Style.pad].join(" ")}>
-          <NavigationBar cartItems={cartItems} />
+          <NavigationBar
+            cartItems={cartItems}
+            showContext={showContext}
+            onContextButtonClick={handleContextButtonClick}
+          />
         </header>
         <section className={[Style.slider, Style.pad].join(" ")}>
           {(loading || postersLoading) && <ImageSliderSkeleton />}
@@ -61,6 +69,12 @@ const Home = () => {
             />
           )}
         </section>
+        {showContext && (
+          <div
+            className={Style.overlay}
+            onClick={() => setShowContext(false)}
+          ></div>
+        )}
       </main>
     </>
   );

@@ -1,0 +1,64 @@
+.form {
+  width: 100%;
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.ddlsContainer {
+  display: flex;
+  gap: var(--gap);
+  justify-content: space-between;
+  width: 100%;
+}
+
+.branchContainer,
+.pickupDateContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.branchContainer select,
+.pickupDateContainer input {
+  color: var(--text);
+}
+
+.requests {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.requests textarea {
+  height: 10rem;
+  color: var(--text);
+}
+.requests textarea::placeholder {
+  color: var(--accent-50);
+}
+
+.submitBtnContainer {
+  display: flex;
+  justify-content: end;
+}
+.submitBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  user-select: none;
+  color: white;
+  text-decoration: none;
+  background-color: var(--primary);
+  border: 2px solid var(--primary-dimmed);
+  width: 10rem;
+  transition: background-color 0.1s ease;
+}
+
+.submitBtn:hover {
+  background-color: var(--primary-dimmed);
+}

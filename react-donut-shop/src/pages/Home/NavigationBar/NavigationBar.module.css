@@ -122,3 +122,30 @@
 .signInBtn:hover {
   background-color: var(--primary-dimmed);
 }
+
+/* for context menu */
+.buttonsContainer {
+  position: relative;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.contextMenuContainer {
+  background-color: white;
+  width: 100%;
+  left: 0;
+  top: 99%;
+  position: absolute;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  padding: calc(var(--gap) * 0.5);
+  opacity: 1;
+  animation: FadeIn 0.2s ease;
+  animation-direction: normal;
+}

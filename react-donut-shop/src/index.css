@@ -8,6 +8,7 @@
   --text: rgba(99, 64, 72, 1);
   --accent-light: rgb(176, 161, 165);
   --accent-70: rgba(99, 64, 72, 0.7);
+  --accent-50: rgba(99, 64, 72, 0.5);
   --accent-20: rgba(99, 64, 72, 0.2);
   --shadow: rgb(227, 227, 227);
   --gap: 2rem;
@@ -23,6 +24,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+*,
+*:focus,
+*:hover {
+  outline: none;
 }
 
 html {
