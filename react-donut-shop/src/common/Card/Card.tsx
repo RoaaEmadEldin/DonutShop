@@ -1,7 +1,7 @@
-import Style from "./Card.module.css";
+import VerticalStyle from "./VerticalCard.module.css";
+import HorizontalStyle from "./HorizontalCard.module.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import Like from "./Like";
-import { useEffect, useState } from "react";
 import AmountControl from "./AmountControl";
 
 interface Props {
@@ -10,7 +10,12 @@ interface Props {
   description: string;
   liked: boolean;
   price: number;
+  amountInCart: number;
   onAmountChange(itemID: string, amountInCart: number): void;
+  options?: {
+    horizontal?: boolean;
+    noDescription?: boolean;
+  };
 }
 const Card = ({
   image,
@@ -18,15 +23,17 @@ const Card = ({
   description,
   liked,
   price,
+  amountInCart,
   onAmountChange,
+  options = {},
 }: Props) => {
-  const [amountInCart, setAmountInCart] = useState(0);
+  const { horizontal = false, noDescription = false } = options;
+  const Style = horizontal ? HorizontalStyle : VerticalStyle;
   const handleLike = () => {
     console.log(`${name} liked button clicked.`);
   };
   const handleAmountChange = (newAmount: number) => {
     onAmountChange(name, newAmount);
-    setAmountInCart(newAmount);
   };
   return (
     <article className={Style.card}>
@@ -37,7 +44,9 @@ const Card = ({
         <div className={Style.topContent}>
           <div className={Style.itemInfo}>
             <p className={Style.itemName}>{name}</p>
-            <p className={Style.itemDescription}>{description}</p>
+            {!noDescription && (
+              <p className={Style.itemDescription}>{description}</p>
+            )}
           </div>
           <Like liked={liked} onClick={handleLike} />
         </div>

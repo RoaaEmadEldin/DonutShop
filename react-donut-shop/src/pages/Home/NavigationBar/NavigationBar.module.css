@@ -87,6 +87,7 @@
   display: flex;
   align-items: center;
   gap: calc(var(--gap) * 2);
+  height: 100%;
 }
 
 .signInBtn {
@@ -142,6 +143,26 @@
   width: 100%;
   left: 0;
   top: 99%;
+  position: absolute;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  padding: calc(var(--gap) * 0.5);
+  opacity: 1;
+  animation: FadeIn 0.2s ease;
+  animation-direction: normal;
+}
+
+.cartIconContainer {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.cartContextMenuContainer {
+  background-color: white;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-100%);
   position: absolute;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   padding: calc(var(--gap) * 0.5);

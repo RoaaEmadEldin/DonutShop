@@ -9,7 +9,7 @@ import ItemSliderSkeleton from "./LoadingSkeletons/ItemSliderSkeleton";
 import useCart from "../../hooks/useCart";
 import { useState } from "react";
 
-const RESOUCRE_PATH = "../../src/assets/";
+export const RESOUCRE_PATH = "../../src/assets/";
 
 const Home = () => {
   const { categories, error, loading, setCategories, setError } =
@@ -36,9 +36,11 @@ const Home = () => {
       <main className={Style.page}>
         <header className={[Style.header, Style.pad].join(" ")}>
           <NavigationBar
+            categories={categories}
             cartItems={cartItems}
             showContext={showContext}
             onContextButtonClick={handleContextButtonClick}
+            onAmountChange={onAmountChange}
           />
         </header>
         <section className={[Style.slider, Style.pad].join(" ")}>
@@ -51,8 +53,7 @@ const Home = () => {
             <ItemSlider
               label="Doughnuts"
               items={categories[4].items.slice(8, 18)}
-              RESOUCRE_PATH={RESOUCRE_PATH}
-              // cartItems={cartItems}
+              cartItems={cartItems}
               onAmountChange={onAmountChange}
             />
           )}
@@ -63,8 +64,7 @@ const Home = () => {
             <ItemSlider
               label="ShareBox"
               items={categories[1].items}
-              RESOUCRE_PATH={RESOUCRE_PATH}
-              // cartItems={cartItems}
+              cartItems={cartItems}
               onAmountChange={onAmountChange}
             />
           )}

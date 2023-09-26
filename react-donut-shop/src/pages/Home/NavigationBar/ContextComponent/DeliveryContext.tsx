@@ -5,7 +5,7 @@ import useLocation from "../../../../hooks/useLocation";
 const DeliveryContext = () => {
   const coords = useLocation();
   return (
-    <>
+    <article className={Style.deliveryContext}>
       <Map coords={coords} />
       <form action="" className={Style.formContainer}>
         <input
@@ -19,7 +19,7 @@ const DeliveryContext = () => {
           </button>
         </div>
       </form>
-    </>
+    </article>
   );
 };
 

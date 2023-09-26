@@ -1,3 +1,9 @@
+.deliveryContext {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
 .formContainer {
   display: flex;
   gap: var(--gap);

@@ -13,17 +13,23 @@ import CartItem from "../../../services/types/CartItem";
 import ContextMenu from "./ContextComponent/ContextMenu";
 import DeliveryContext from "./ContextComponent/DeliveryContext";
 import PickupContext from "./ContextComponent/PickupContext";
+import Category from "../../../services/types/Category";
+import CartContext from "./ContextComponent/CartContext";
 
 interface Props {
+  categories: Category[];
   cartItems: CartItem[];
   showContext: boolean;
   onContextButtonClick(): void;
+  onAmountChange(itemID: string, amountInCart: number): void;
 }
 
 const NavigationBar = ({
+  categories,
   cartItems,
   showContext,
   onContextButtonClick,
+  onAmountChange,
 }: Props) => {
   const [selectedMode, setSelectedMode] = useState(0);
   const calculateAmount = () => {
@@ -69,10 +75,11 @@ const NavigationBar = ({
               <img src={Menu} alt="menu-photo" />
               <span>Menu</span>
             </Link>
-            {showContext && (
+            {showContext && selectedMode < 2 && (
               <div className={Style.contextMenuContainer}>
                 <ContextMenu>
-                  {selectedMode == 0 ? <PickupContext /> : <DeliveryContext />}
+                  {selectedMode === 0 && <PickupContext />}
+                  {selectedMode === 1 && <DeliveryContext />}
                 </ContextMenu>
               </div>
             )}
@@ -80,10 +87,27 @@ const NavigationBar = ({
         </div>
         <div className={Style.rightSegment}>
           <div className={Style.actions}>
-            <CartIcon
-              itemsCount={calculateAmount()}
-              onClick={() => console.log(cartItems)}
-            />
+            <div className={Style.cartIconContainer}>
+              <CartIcon
+                itemsCount={calculateAmount()}
+                onClick={() => {
+                  if (!cartItems.length) return;
+                  setSelectedMode(2);
+                  onContextButtonClick();
+                }}
+              />
+              {showContext && selectedMode === 2 && (
+                <div className={Style.cartContextMenuContainer}>
+                  <ContextMenu>
+                    <CartContext
+                      categories={categories}
+                      cartItems={cartItems}
+                      onAmountChange={onAmountChange}
+                    />
+                  </ContextMenu>
+                </div>
+              )}
+            </div>
             <div>
               <Link to="/login" className={Style.signInBtn}>
                 <span>SIGN IN</span>
