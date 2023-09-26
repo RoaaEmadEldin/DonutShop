@@ -4,13 +4,20 @@ import CartItem from "../../../../services/types/CartItem";
 import Category from "../../../../services/types/Category";
 import { RESOUCRE_PATH } from "../../Home";
 import Style from "./CartContext.module.css";
+import { CardProps } from "../../../../common/Card/Card";
 
-interface Props {
+interface Props extends CardProps {
   categories: Category[];
   cartItems: CartItem[];
-  onAmountChange(itemID: string, amountInCart: number): void;
+  likedItems: string[];
 }
-const CartContext = ({ categories, cartItems, onAmountChange }: Props) => {
+const CartContext = ({
+  categories,
+  cartItems,
+  likedItems,
+  onAmountChange,
+  onItemLike,
+}: Props) => {
   const allItems = categories.map((category) => category.items).flat();
   const items = cartItems.map((cartItem) => {
     return {
@@ -35,10 +42,11 @@ const CartContext = ({ categories, cartItems, onAmountChange }: Props) => {
                   image={RESOUCRE_PATH + item.item.image[3]}
                   name={item.item.name}
                   description={item.item.description}
-                  liked={false}
+                  liked={likedItems.includes(item.item.name)}
                   price={item.item.price}
                   amountInCart={item.amount}
                   onAmountChange={onAmountChange}
+                  onItemLike={onItemLike}
                   options={{ horizontal: true, noDescription: true }}
                 />
               )

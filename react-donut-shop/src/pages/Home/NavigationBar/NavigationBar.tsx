@@ -15,21 +15,24 @@ import DeliveryContext from "./ContextComponent/DeliveryContext";
 import PickupContext from "./ContextComponent/PickupContext";
 import Category from "../../../services/types/Category";
 import CartContext from "./ContextComponent/CartContext";
+import { CardProps } from "../../../common/Card/Card";
 
-interface Props {
+interface Props extends CardProps {
   categories: Category[];
   cartItems: CartItem[];
+  likedItems: string[];
   showContext: boolean;
   onContextButtonClick(): void;
-  onAmountChange(itemID: string, amountInCart: number): void;
 }
 
 const NavigationBar = ({
   categories,
   cartItems,
+  likedItems,
   showContext,
   onContextButtonClick,
   onAmountChange,
+  onItemLike,
 }: Props) => {
   const [selectedMode, setSelectedMode] = useState(0);
   const calculateAmount = () => {
@@ -102,7 +105,9 @@ const NavigationBar = ({
                     <CartContext
                       categories={categories}
                       cartItems={cartItems}
+                      likedItems={likedItems}
                       onAmountChange={onAmountChange}
+                      onItemLike={onItemLike}
                     />
                   </ContextMenu>
                 </div>

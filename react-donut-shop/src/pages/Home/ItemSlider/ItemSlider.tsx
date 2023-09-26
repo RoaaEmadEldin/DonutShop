@@ -1,17 +1,25 @@
 import Card from "../../../common/Card";
+import { CardProps } from "../../../common/Card/Card";
 import CartItem from "../../../services/types/CartItem";
 import Item from "../../../services/types/Item";
 import { RESOUCRE_PATH } from "../Home";
 import Style from "./ItemSlider.module.css";
 
-interface Props {
+interface Props extends CardProps {
   label: string;
   items: Item[];
   cartItems: CartItem[];
-  onAmountChange(itemID: string, amountInCart: number): void;
+  likedItems: string[];
 }
 
-const ItemSlider = ({ label, items, cartItems, onAmountChange }: Props) => {
+const ItemSlider = ({
+  label,
+  items,
+  cartItems,
+  likedItems,
+  onAmountChange,
+  onItemLike,
+}: Props) => {
   return (
     <article className={Style.itemSlider}>
       <div className={Style.labelContainer}>
@@ -24,13 +32,14 @@ const ItemSlider = ({ label, items, cartItems, onAmountChange }: Props) => {
             image={RESOUCRE_PATH + item.image[3]}
             name={item.name}
             description={item.description}
-            liked={false}
+            liked={likedItems.includes(item.name)}
             price={item.price}
             amountInCart={
               cartItems.find((cartItem) => cartItem.itemID === item.name)
                 ?.amount || 0
             }
             onAmountChange={onAmountChange}
+            onItemLike={onItemLike}
           />
         ))}
       </div>

@@ -14,6 +14,9 @@ export const RESOUCRE_PATH = "../../src/assets/";
 const Home = () => {
   const { categories, error, loading, setCategories, setError } =
     useCategories();
+  const { cart, cartItems, setCartItems } = useCart();
+  const [likedItems, setLikedItems] = useState<string[]>([]);
+  const [showContext, setShowContext] = useState(false);
 
   const posters = categories.map((category) => {
     return {
@@ -21,15 +24,20 @@ const Home = () => {
       image: RESOUCRE_PATH + category.thumbnail[3],
     };
   });
+
   const postersLoading = useImages(posters.map((poster) => poster.image));
 
-  const { cart, cartItems, setCartItems } = useCart();
   const onAmountChange = (itemID: string, amountInCart: number) => {
     cart.addCartItem(itemID, amountInCart);
     setCartItems(cart.cartItems);
   };
-  const [showContext, setShowContext] = useState(false);
+
   const handleContextButtonClick = () => setShowContext(true);
+
+  const handleItemLike = (itemID: string) => {
+    if (!likedItems.includes(itemID)) setLikedItems([...likedItems, itemID]);
+    else setLikedItems(likedItems.filter((item) => item !== itemID));
+  };
 
   return (
     <>
@@ -38,9 +46,11 @@ const Home = () => {
           <NavigationBar
             categories={categories}
             cartItems={cartItems}
+            likedItems={likedItems}
             showContext={showContext}
             onContextButtonClick={handleContextButtonClick}
             onAmountChange={onAmountChange}
+            onItemLike={handleItemLike}
           />
         </header>
         <section className={[Style.slider, Style.pad].join(" ")}>
@@ -53,8 +63,10 @@ const Home = () => {
             <ItemSlider
               label="Doughnuts"
               items={categories[4].items.slice(8, 18)}
+              likedItems={likedItems}
               cartItems={cartItems}
               onAmountChange={onAmountChange}
+              onItemLike={handleItemLike}
             />
           )}
         </section>
@@ -64,8 +76,10 @@ const Home = () => {
             <ItemSlider
               label="ShareBox"
               items={categories[1].items}
+              likedItems={likedItems}
               cartItems={cartItems}
               onAmountChange={onAmountChange}
+              onItemLike={handleItemLike}
             />
           )}
         </section>
