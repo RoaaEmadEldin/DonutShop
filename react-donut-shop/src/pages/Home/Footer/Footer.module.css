@@ -1,0 +1,47 @@
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap);
+  height: 20rem;
+  width: 100%;
+  color: white;
+}
+
+.companyName {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.companyDescription {
+  margin: 0;
+  display: block;
+  width: 100ch;
+  text-align: center;
+}
+
+.icons {
+  display: flex;
+  gap: var(--gap);
+  color: var(--secondary);
+}
+
+.icons a {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.icons svg {
+  font-size: 2rem;
+  transition: color 0.1s ease;
+}
+.icons svg:hover {
+  color: var(--secondary-dimmed);
+}
