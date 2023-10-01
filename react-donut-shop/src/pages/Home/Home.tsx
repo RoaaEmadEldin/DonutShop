@@ -8,8 +8,9 @@ import ItemSlider from "./ItemSlider";
 import ItemSliderSkeleton from "./LoadingSkeletons/ItemSliderSkeleton";
 import useCart from "../../hooks/useCart";
 import { useState } from "react";
+import About from "./About";
 
-export const RESOUCRE_PATH = "../../src/assets/";
+export const RESOUCRE_PATH = "/src/assets/";
 
 const Home = () => {
   const { categories, error, loading, setCategories, setError } =
@@ -41,7 +42,7 @@ const Home = () => {
 
   return (
     <>
-      <main className={Style.page}>
+      <main className={[Style.page, Style.pad].join(" ")}>
         <header className={[Style.header, Style.pad].join(" ")}>
           <NavigationBar
             categories={categories}
@@ -53,11 +54,11 @@ const Home = () => {
             onItemLike={handleItemLike}
           />
         </header>
-        <section className={[Style.slider, Style.pad].join(" ")}>
+        <section className={Style.slider}>
           {(loading || postersLoading) && <ImageSliderSkeleton />}
           {!loading && !postersLoading && <ImageSlider posters={posters} />}
         </section>
-        <section className={[Style.itemSlider, Style.pad].join(" ")}>
+        <section className={Style.itemSlider}>
           {loading && <ItemSliderSkeleton cardsAmount={6} />}
           {!loading && (
             <ItemSlider
@@ -70,7 +71,7 @@ const Home = () => {
             />
           )}
         </section>
-        <section className={[Style.itemSlider, Style.pad].join(" ")}>
+        <section className={Style.itemSlider}>
           {loading && <ItemSliderSkeleton cardsAmount={3} />}
           {!loading && (
             <ItemSlider
@@ -82,6 +83,12 @@ const Home = () => {
               onItemLike={handleItemLike}
             />
           )}
+        </section>
+        <div className={Style.separator}>
+          <span></span>
+        </div>
+        <section className={Style.about}>
+          <About />
         </section>
         {showContext && (
           <div
