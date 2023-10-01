@@ -6,9 +6,9 @@
 
 .itemsWrapper {
   padding: calc(var(--gap) * 0.5) 0;
-  background-color: var(--accent-10);
+  background-color: var(--background);
   border-radius: var(--border-radius);
-  box-shadow: 0 0 2px var(--shadow);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.18);
 }
 
 .cartItemsContainer {

@@ -9,6 +9,8 @@ import ItemSliderSkeleton from "./LoadingSkeletons/ItemSliderSkeleton";
 import useCart from "../../hooks/useCart";
 import { useState } from "react";
 import About from "./About";
+import { FaInstagram, FaTiktok } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/Hi";
 
 export const RESOUCRE_PATH = "/src/assets/";
 
@@ -42,7 +44,7 @@ const Home = () => {
 
   return (
     <>
-      <main className={[Style.page, Style.pad].join(" ")}>
+      <main className={Style.page}>
         <header className={[Style.header, Style.pad].join(" ")}>
           <NavigationBar
             categories={categories}
@@ -54,11 +56,11 @@ const Home = () => {
             onItemLike={handleItemLike}
           />
         </header>
-        <section className={Style.slider}>
+        <section className={[Style.slider, Style.pad].join(" ")}>
           {(loading || postersLoading) && <ImageSliderSkeleton />}
           {!loading && !postersLoading && <ImageSlider posters={posters} />}
         </section>
-        <section className={Style.itemSlider}>
+        <section className={[Style.itemSlider, Style.pad].join(" ")}>
           {loading && <ItemSliderSkeleton cardsAmount={6} />}
           {!loading && (
             <ItemSlider
@@ -71,7 +73,7 @@ const Home = () => {
             />
           )}
         </section>
-        <section className={Style.itemSlider}>
+        <section className={[Style.itemSlider, Style.pad].join(" ")}>
           {loading && <ItemSliderSkeleton cardsAmount={3} />}
           {!loading && (
             <ItemSlider
@@ -84,12 +86,40 @@ const Home = () => {
             />
           )}
         </section>
-        <div className={Style.separator}>
+        <div className={[Style.separator, Style.pad].join(" ")}>
           <span></span>
         </div>
-        <section className={Style.about}>
+        <section className={[Style.about, Style.pad].join(" ")}>
           <About />
         </section>
+        <footer className={[Style.footer, Style.pad].join(" ")}>
+          <div className={Style.footerContent}>
+            <p className={Style.companyName}>Fatis.eg</p>
+            <p className={Style.companyDescription}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
+              nam laudantium in consequatur maxime repellat! Nisi modi quibusdam
+              voluptatibus beatae itaque magnam voluptates eveniet eaque,
+              mollitia, asperiores libero deserunt dolor?
+            </p>
+            <div className={Style.icons}>
+              <span>
+                <a href="https://www.instagram.com/fatis.eg/">
+                  <FaInstagram />
+                </a>
+              </span>
+              <span>
+                <a href="https://www.tiktok.com/@fatis.eg">
+                  <FaTiktok />
+                </a>
+              </span>
+              <span>
+                <a href="">
+                  <HiOutlineMail />
+                </a>
+              </span>
+            </div>
+          </div>
+        </footer>
         {showContext && (
           <div
             className={Style.overlay}
