@@ -1,8 +1,10 @@
 import Style from "./SignUp.module.css";
 import React, { useState } from "react";
-import "font-awesome/css/font-awesome.min.css";
+import Logo from "../assets/main/logo.png";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -10,7 +12,7 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
-
+  const [showPassword, setShowPassword] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -18,10 +20,45 @@ const SignUp = () => {
       [name]: value,
     });
   };
+  const isUsernameValid = (username: string) => {
+    if (username.length < 6) {
+      return false;
+    }
+    const alphanumericRegex = /^[a-zA-Z0-9]+$/;
+    if (!alphanumericRegex.test(username)) {
+      return false;
+    }
 
+    if (username.includes("@")) {
+      return false;
+    }
+
+    return true;
+  };
+  const isEmailValid = (email: string) => {
+    const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+
+    return emailRegex.test(email);
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  // const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!isUsernameValid(formData.username)) {
+      alert(
+        "Username must be at least 6 characters long and should not contain the '@' symbol."
+      );
+      return;
+    }
+
+    if (!isEmailValid(formData.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
     const isStrongPassword = (password: string) => {
       return password.length >= 8;
     };
@@ -36,6 +73,14 @@ const SignUp = () => {
     }
 
     console.log(formData);
+    // if (
+    //   isUsernameValid(formData.username) &&
+    //   isEmailValid(formData.email) &&
+    //   isStrongPassword(formData.password) &&
+    //   formData.password !== formData.confirmPassword
+    // ) {
+    //   navigate("/home");
+    // }
   };
   return (
     <>
@@ -51,15 +96,27 @@ const SignUp = () => {
           </svg>
           <article className={Style.content}>
             <div className={Style.form1}>
-              <h2>GET STARTED</h2>
-              <p>by creating a free account </p>
+              <div className={Style.logoContainer}>
+                <a href="/home">
+                  <img className={Style.logo} src={Logo} alt="Logo" />
+                </a>
+              </div>
+              <div className={Style.hh}>
+                <h5>GET STARTED</h5>
+              </div>
+              <div className={Style.paragraphh}>
+                <p>by creating a free account </p>
+              </div>
 
               {
                 <form onSubmit={handleSubmit}>
                   <div className={Style.formGroup}>
-                    <label htmlFor="username">Username</label>
+                    <label className={Style.lbl} htmlFor="username">
+                      Username
+                    </label>
 
                     <input
+                      className={Style.inp}
                       placeholder="Enter a username"
                       type="text"
                       id="username"
@@ -70,8 +127,12 @@ const SignUp = () => {
                     />
                   </div>
                   <div className={Style.formGroup}>
-                    <label htmlFor="email">Email</label>
+                    {" "}
+                    <label className={Style.lbl} htmlFor="email">
+                      Email
+                    </label>
                     <input
+                      className={Style.inp}
                       placeholder="enter your Email"
                       type="email"
                       id="email"
@@ -82,48 +143,88 @@ const SignUp = () => {
                     />
                   </div>
                   <div className={Style.formGroup}>
-                    <label htmlFor="password">Password</label>
+                    <label className={Style.lbl} htmlFor="password">
+                      Password
+                    </label>
+
                     <input
+                      className={Style.inp}
                       placeholder="Enter a strong password"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       id="password"
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
                       required
                     />
+
+                    <button
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                      className={`${Style.showPasswordBtn} showPasswordBtn`}
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </button>
                   </div>
+
                   <div className={Style.formGroup}>
-                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    <label className={Style.lbl} htmlFor="confirmPassword">
+                      Confirm Password
+                    </label>
+
                     <input
+                      className={Style.inp}
                       placeholder="Re-enter the password"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       id="confirmPassword"
                       name="confirmPassword"
                       value={formData.confirmPassword}
                       onChange={handleChange}
                       required
                     />
+
+                    <button
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                      className={`${Style.showPasswordBtn} showPasswordBtn`}
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </button>
                   </div>
+
                   <div className={Style.formGroup}>
                     <button type="submit" className={Style.btn}>
                       Sign Up
                     </button>
+
+                    <div className={Style.horizontalLine}>
+                      <span className={Style.lineText}>Or Sign Up With</span>
+                    </div>
+
                     <div className={Style.socialIcons}>
-                      <a href="#" className={Style.googleIcon}>
-                        <i className="fab fa-google"></i> Sign Up with Google
+                      <a
+                        href="https://accounts.google.com/signin"
+                        className={Style.googleIcon}
+                      >
+                        Google<span> </span>
+                        <FaGoogle />
                       </a>
-                      <a href="#" className={Style.facebookIcon}>
-                        <i className="fa-brands fa-facebook"></i> Sign Up with
-                        Facebook
+                      <a
+                        href="https://www.facebook.com/login.php"
+                        className={Style.facebookIcon}
+                      >
+                        Facebook<span> </span>
+                        <FaFacebook />
                       </a>
                     </div>
-                    <p>
-                      Already have an account?{" "}
-                      <a href="/signin" className={Style.si}>
-                        Sign in
-                      </a>
-                    </p>
+                    <div className={Style.paragraphh}>
+                      <p>
+                        Already have an account?{" "}
+                        <a href="/login" className={Style.si}>
+                          login
+                        </a>
+                      </p>
+                    </div>
                   </div>
                 </form>
               }
