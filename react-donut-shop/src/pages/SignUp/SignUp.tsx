@@ -1,6 +1,6 @@
 import Style from "./SignUp.module.css";
 import React, { useState } from "react";
-import Logo from "../assets/main/logo.png";
+import Logo from "../../assets/main/logo.png";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
