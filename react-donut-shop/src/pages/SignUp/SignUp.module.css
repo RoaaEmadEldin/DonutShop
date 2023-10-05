@@ -1,5 +1,5 @@
+/* SignUp.module.css */
 .parentContainer {
-  background-color: rgba(248, 221, 227, 1);
   display: grid;
   height: 100vh;
   height: 100svh;
@@ -8,32 +8,180 @@
 }
 .backgroundImageContainer {
   background-image: url("../../assets/backgrounds/dounuts-background.jpeg");
+  background-position: 0px -50px;
   background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
+  background-size: 95%;
 }
 .contentContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  background-color: rgba(248, 221, 227, 1);
 }
 .wave {
   position: absolute;
   fill: rgba(248, 221, 227, 1);
   top: -40%;
-  left: -5px;
+  left: 0;
   height: 160%;
-  transform: translate(-95%) rotateX(180deg);
+  transform: translate(-100%) rotateX(180deg);
   z-index: 5;
 }
+.logoContainer {
+  text-align: center;
+  margin: 2rem 0 0 0;
+}
 
+.logo {
+  width: 15%;
+}
 .content {
+  /* fill: rgba(248, 221, 227, 1); */
   z-index: 10;
-  border: 5px solid var(--text);
-  width: 40rem;
-  height: 40rem;
+  /* border: 5px solid var(--text); */
+  /* width: 50rem;
+  height: 40rem; */
   font-size: 4rem;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  /* background-color: rgba(255, 255, 255, 0.35); */
+  border-radius: 15px;
+}
+
+.form1 {
+  width: 45rem;
+  height: 55rem;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 15px;
+  align-items: center;
+}
+
+.hh {
+  align-items: cente r;
+  font-size: 25px;
+  height: min-content;
+  color: rgb(204, 86, 69);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 1px; */
+}
+.paragraphh {
+  align-items: center;
+  font-size: 15px;
+  height: min-content;
+  color: rgb(204, 86, 69);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formGroup {
+  /* padding-bottom: 20px;  */
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 30px;
+}
+.lbl {
+  font-weight: 500;
+  font-size: 17px;
+  color: rgb(142, 66, 37);
+  justify-content: left;
+  margin-right: 60%;
+  display: inline;
+}
+
+.inp {
+  margin-bottom: 0.8rem;
+  padding: 10px;
+  border: 1px solid #e6dada;
+  border-radius: 15px;
+  outline: none;
+  background-color: #fffcfc;
+  width: 90%;
+}
+.btn {
+  background-color: rgba(225, 29, 56, 0.59);
+  color: rgb(93, 26, 6);
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 1px;
+  width: 90%;
+  margin-top: 10px;
+  height: 30px;
+}
+.btn:hover {
+  background-color: #59192b;
+  color: #fed3d7;
+}
+.socialIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.googleIcon,
+.facebookIcon {
+  text-decoration: none;
+  font-size: 16px;
+  margin-right: 10px;
+  color: rgb(142, 66, 37);
+  margin-bottom: 10px;
+}
+
+.horizontalLine {
+  width: 90%;
+  text-align: center;
+  position: relative;
+  border-top: 00.1px solid rgb(142, 66, 37);
+  margin-top: 25px;
+}
+.lineText {
+  color: rgb(142, 66, 37);
+  /* margin-top: 20px; */
+  padding: 0 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(250, 232, 236);
+  font-size: 1.2rem;
+}
+
+.si {
+  color: rgb(204, 86, 69);
+  font-style: italic;
+  font-weight: 600;
+}
+.si:hover {
+  color: #59192b;
+}
+
+.showPasswordBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 30%;
+  top: 55.3%;
+  transform: translateY(-50%);
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.showPasswordBtn svg {
+  font-size: 1.8rem;
+  color: rgb(232, 83, 103);
+}
+
+.showPasswordBtn:hover {
+  background-color: transparent;
 }
