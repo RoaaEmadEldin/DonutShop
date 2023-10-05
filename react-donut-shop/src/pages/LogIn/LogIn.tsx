@@ -1,6 +1,6 @@
 import Style from "./Login.module.css";
 import Logo from "../../assets/main/logo.png";
-import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { FaEyeSlash, FaEye, FaFacebook } from "react-icons/fa";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -132,12 +132,16 @@ const LogIn = () => {
                 <span className={Style.lineText}>Or Login With</span>
               </div>
 
-              <div className={Style.googleLogoContainer}>
+              <div className={Style.IconsContainer}>
                 <img
                   onClick={handleSubmit(onSubmit)}
                   className={Style.googleLogo}
                   src="./src/pages/LogIn/google-logo.png"
                 ></img>
+                <FaFacebook
+                  onClick={handleSubmit(onSubmit)}
+                  className={Style.facebookIcon}
+                />
               </div>
             </div>
           </form>
