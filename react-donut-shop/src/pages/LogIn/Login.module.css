@@ -136,13 +136,20 @@
   font-size: 1.3rem;
 }
 
-.googleLogoContainer {
+.IconsContainer {
   text-align: center;
 }
 
 .googleLogo {
   margin: 1.5rem;
   width: 7%;
+  border-radius: 1.4rem;
+}
+
+.facebookIcon{
+  font-size: 3.2rem;
+  color: #316FF6;
+  border-radius: 1.4rem;
 }
 
 .inputPass {
@@ -160,7 +167,6 @@
   border: 0;
   width: 10%;
   text-align: center;
-
   height: 4rem;
   background-color: white;
   color: rgba(225, 29, 56, 1);
@@ -183,4 +189,8 @@
 
 .forgetPass:hover {
   font-weight: 600;
+}
+.googleLogo:hover, .facebookIcon:hover{
+  cursor: pointer;
+  background-color: rgba(248, 221, 227, 1);
 }
