@@ -8,8 +8,10 @@ import ItemSlider from "./ItemSlider";
 import ItemSliderSkeleton from "./LoadingSkeletons/ItemSliderSkeleton";
 import useCart from "../../hooks/useCart";
 import { useState } from "react";
+import About from "./About";
+import Footer from "./Footer";
 
-export const RESOUCRE_PATH = "../../src/assets/";
+export const RESOUCRE_PATH = "/src/assets/";
 
 const Home = () => {
   const { categories, error, loading, setCategories, setError } =
@@ -83,6 +85,15 @@ const Home = () => {
             />
           )}
         </section>
+        <div className={[Style.separator, Style.pad].join(" ")}>
+          <span></span>
+        </div>
+        <section className={[Style.about, Style.pad].join(" ")}>
+          <About />
+        </section>
+        <footer className={[Style.footer, Style.pad].join(" ")}>
+          <Footer />
+        </footer>
         {showContext && (
           <div
             className={Style.overlay}
