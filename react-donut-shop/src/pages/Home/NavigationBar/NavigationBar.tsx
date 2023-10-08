@@ -25,6 +25,12 @@ interface Props extends CardProps {
   onContextButtonClick(): void;
 }
 
+enum Contexts {
+  PICKUP,
+  DELIVERY,
+  CART,
+}
+
 const NavigationBar = ({
   categories,
   cartItems,
@@ -34,11 +40,17 @@ const NavigationBar = ({
   onAmountChange,
   onItemLike,
 }: Props) => {
-  const [selectedMode, setSelectedMode] = useState(0);
+  const [selectedMode, setSelectedMode] = useState<0 | 1>(0);
+  const [contexts, setContexts] = useState([true, false, false]);
   const calculateAmount = () => {
     let sum = 0;
     cartItems.map((item) => item.amount).forEach((el) => (sum += el));
     return sum;
+  };
+  const selectContext = (context: Contexts) => {
+    const newContexts = new Array(contexts.length).fill(false);
+    newContexts[context] = true;
+    setContexts(newContexts);
   };
   return (
     <>
@@ -56,6 +68,7 @@ const NavigationBar = ({
                 selected={selectedMode == 0}
                 onClick={() => {
                   setSelectedMode(0);
+                  selectContext(Contexts.PICKUP);
                   onContextButtonClick();
                 }}
               >
@@ -67,6 +80,7 @@ const NavigationBar = ({
                 selected={selectedMode == 1}
                 onClick={() => {
                   setSelectedMode(1);
+                  selectContext(Contexts.DELIVERY);
                   onContextButtonClick();
                 }}
               >
@@ -78,14 +92,15 @@ const NavigationBar = ({
               <img src={Menu} alt="menu-photo" />
               <span>Menu</span>
             </Link>
-            {showContext && selectedMode < 2 && (
-              <div className={Style.contextMenuContainer}>
-                <ContextMenu>
-                  {selectedMode === 0 && <PickupContext />}
-                  {selectedMode === 1 && <DeliveryContext />}
-                </ContextMenu>
-              </div>
-            )}
+            {showContext &&
+              (contexts[Contexts.PICKUP] || contexts[Contexts.DELIVERY]) && (
+                <div className={Style.contextMenuContainer}>
+                  <ContextMenu>
+                    {contexts[Contexts.PICKUP] && <PickupContext />}
+                    {contexts[Contexts.DELIVERY] && <DeliveryContext />}
+                  </ContextMenu>
+                </div>
+              )}
           </div>
         </div>
         <div className={Style.rightSegment}>
@@ -95,11 +110,11 @@ const NavigationBar = ({
                 itemsCount={calculateAmount()}
                 onClick={() => {
                   if (!cartItems.length) return;
-                  setSelectedMode(2);
+                  selectContext(Contexts.CART);
                   onContextButtonClick();
                 }}
               />
-              {showContext && selectedMode === 2 && (
+              {showContext && contexts[Contexts.CART] && (
                 <div className={Style.cartContextMenuContainer}>
                   <ContextMenu>
                     <CartContext
