@@ -9,3 +9,10 @@ This website is built using **React Framework** for an online Doughnut shop prov
 
 ### Home Page
 * The home page serves as the main page of the website and provides the user with some services.
+
+<br>
+
+## Project Authors
+* [Youssef Emad](https://github.com/Usf3md)
+* [Roaa EmadEldin](https://github.com/RoaaEmadEldin)
+* [Rana Emara](https://github.com/RanaImara22)
